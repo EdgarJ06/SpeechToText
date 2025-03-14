@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SpeechController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+
+Route::get('/', [SpeechController::class, 'index'])->name('speech.index');
+Route::post('/speech/transcribir', [SpeechController::class, 'transcribirAudio'])->name('speech.transcribir');
